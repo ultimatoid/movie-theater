@@ -1,8 +1,5 @@
 package com.jpmc.theater;
 
-import com.jpmc.theater.model.Customer;
-import com.jpmc.theater.model.Reservation;
-import com.jpmc.theater.model.Theater;
 import com.jpmc.theater.service.impl.MovieServiceImpl;
 import com.jpmc.theater.service.impl.ShowingServiceImpl;
 import com.jpmc.theater.service.impl.TheaterServiceImpl;
@@ -15,8 +12,6 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-
-import static org.junit.Assert.assertEquals;
 
 public class TheaterTests {
     private ShowingRepositoryStub showingRepository;
@@ -49,17 +44,13 @@ public class TheaterTests {
         theaterService = new TheaterServiceImpl(showingService, movieService);
     }
 
-/*    @Test
-    void totalFeeForCustomer() {
-        Theater theater = new Theater();
-        Customer john = new Customer("John Doe", "id-12345");
-        Reservation reservation = theater.reserve(john, 2, 4);
-//        System.out.println("You have to pay " + reservation.getTotalFee());
-        // assertEquals(reservation.totalFee(), 50, 0);
-    }*/
-
     @Test
     public void printMovieSchedule() {
         theaterService.printSchedule();
+    }
+
+    @Test
+    public void printMovieScheduleJson() {
+        theaterService.printSchedule(true);
     }
 }
